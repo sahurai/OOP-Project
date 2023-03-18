@@ -1,0 +1,162 @@
+{
+    "stations" : {
+        "1" : [
+            "Devyatkino",
+            "Grazhdanskiy Prospekt",
+            "Akademicheskaya",
+            "Politekhnicheskaya",
+            "Ploschad Muzestva",
+            "Lesnaya",
+            "Vyborgskaya",
+            "Ploshchad Lenina",
+            "Chernyshevskaya",
+            "Ploshchad Vosstaniya",
+            "Vladimirskaya",
+            "Pushkinskaya",
+            "Tekhnologichesky Institut 1",
+            "Baltiyskaya",
+            "Narvskaya",
+            "Kirovsky Zavod",
+            "Avtovo",
+            "Leninsky Prospekt",
+            "Prospekt Veteranov"
+        ],
+        "2" : [
+            "Parnas",
+            "Prospekt Prosvescheniya",
+            "Ozerki",
+            "Udelnaya",
+            "Pionerskaya",
+            "Chyornaya Rechka",
+            "Petrogradskaya",
+            "Gorkovskaya",
+            "Nevsky Prospekt",
+            "Sennaya Ploshchad",
+            "Tekhnologichesky Institut 2",
+            "Frunzenskaya",
+            "Moskovskiye Vorota",
+            "Elektrosila",
+            "Park Pobedy",
+            "Moskovskaya",
+            "Zvyozdnaya",
+            "Kupchino"
+        ],
+        "3" : [
+            "Begovaya",
+            "Zenit",
+            "Primorskaya",
+            "Vasileostrovskaya",
+            "Gostiny Dvor",
+            "Mayakovskaya",
+            "Ploshchad Alexandra Nevskogo 1",
+            "Yelizarovskaya",
+            "Lomonosovskaya",
+            "Proletarskaya",
+            "Obukhovo",
+            "Rybatskoye"
+        ],
+        "4" : [
+            "Spasskaya",
+            "Dostoyevskaya",
+            "Ligovsky Prospekt",
+            "Ploshchad Alexandra Nevskogo 2",
+            "Novocherkasskaya",
+            "Ladozhskaya",
+            "Prospekt Bolshevikov",
+            "Ulitsa Dybenko"
+        ],
+        "5" : [
+            "Komendantsky Prospekt",
+            "Staraya Derevnya",
+            "Krestovsky Ostrov",
+            "Chkalovskaya",
+            "Sportivnaya",
+            "Admiralteyskaya",
+            "Sadovaya",
+            "Zvenigorodskaya",
+            "Obvodny Kanal",
+            "Volkovskaya",
+            "Bukharestskaya",
+            "Mezhdunarodnaya",
+            "Prospekt Slavy",
+            "Dunayskaya",
+            "Shushary"
+        ]
+    },
+    "connections": [
+        [
+            {
+                "line": 2,
+                "station": "Nevsky Prospekt"
+            },
+            {
+                "line": 3,
+                "station": "Gostiny Dvor"
+            }
+        ],
+        [
+            {
+                "line": 1,
+                "station": "Ploshchad Vosstaniya"
+            },
+            {
+                "line": 3,
+                "station": "Mayakovskaya"
+            }
+        ],
+        [
+            {
+                "line": 2,
+                "station": "Sennaya Ploshchad"
+            },
+            {
+                "line": 4,
+                "station": "Spasskaya"
+            },
+            {
+                "line": 5,
+                "station": "Sadovaya"
+            }
+        ],
+        [
+            {
+                "line": 1,
+                "station": "Vladimirskaya"
+            },
+            {
+                "line": 4,
+                "station": "Dostoevskaya"
+            }
+        ],
+        [
+            {
+                "line": 1,
+                "station": "Pushkinskaya"
+            },
+            {
+                "line": 5,
+                "station": "Zvenigorodskaya"
+            }
+        ],
+        [
+            {
+                "line": 3,
+                "station": "Ploshchad Alexandra Nevskogo 1"
+            },
+            {
+                "line": 4,
+                "station": "Ploshchad Alexandra Nevskogo 2"
+            }
+        ],
+        [
+            {
+                "line": 1,
+                "station": "Tekhnologichesky Institut 1"
+            },
+            {
+                "line": 2,
+                "station": "Tekhnologichesky Institut 2"
+            }
+        ]
+    ]
+}
