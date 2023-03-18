@@ -17,7 +17,9 @@ public class RouteCalculator {
 
     public List<Station> findShortestRoute(String startName, String endName) {
         List<Station> route = calculateRoute(startName, endName);
-        storedRoutes.add(route); // Добавляем маршрут до листа
+        if(!route.isEmpty()){
+            storedRoutes.add(route); // Добавляем маршрут до листа
+        }
         return route;
     }
 
@@ -89,9 +91,12 @@ public class RouteCalculator {
             return new ArrayList<>();
         }
 
-        // Проверяем открыта ли станция прибытия
+        // Проверяем открыта ли станция прибытия или отбытия
         if (!end.isStatus()) {
             System.out.println("This station: " + end.getNameOfStation() + " is closed! You can't get there.");
+            return new ArrayList<>();
+        }else if(!start.isStatus()){
+            System.out.println("This station: " + start.getNameOfStation() + " is closed! You can't get there.");
             return new ArrayList<>();
         }
 
