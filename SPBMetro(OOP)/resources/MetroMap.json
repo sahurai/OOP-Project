@@ -5,7 +5,7 @@
             "Grazhdanskiy Prospekt",
             "Akademicheskaya",
             "Politekhnicheskaya",
-            "Ploschad Muzestva",
+            "Ploschad Muzhestva",
             "Lesnaya",
             "Vyborgskaya",
             "Ploshchad Lenina",
@@ -13,12 +13,12 @@
             "Ploshchad Vosstaniya",
             "Vladimirskaya",
             "Pushkinskaya",
-            "Tekhnologichesky Institut 1",
+            "Tekhnologicheskiy Institut 1",
             "Baltiyskaya",
             "Narvskaya",
-            "Kirovsky Zavod",
+            "Kirovskiy Zavod",
             "Avtovo",
-            "Leninsky Prospekt",
+            "Leninskiy Prospekt",
             "Prospekt Veteranov"
         ],
         "2" : [
@@ -30,9 +30,9 @@
             "Chyornaya Rechka",
             "Petrogradskaya",
             "Gorkovskaya",
-            "Nevsky Prospekt",
+            "Nevskiy Prospekt",
             "Sennaya Ploshchad",
-            "Tekhnologichesky Institut 2",
+            "Tekhnologicheskiy Institut 2",
             "Frunzenskaya",
             "Moskovskiye Vorota",
             "Elektrosila",
@@ -48,7 +48,7 @@
             "Vasileostrovskaya",
             "Gostiny Dvor",
             "Mayakovskaya",
-            "Ploshchad Alexandra Nevskogo 1",
+            "Ploshchad Aleksandra Nevskogo 1",
             "Yelizarovskaya",
             "Lomonosovskaya",
             "Proletarskaya",
@@ -58,17 +58,17 @@
         "4" : [
             "Spasskaya",
             "Dostoyevskaya",
-            "Ligovsky Prospekt",
-            "Ploshchad Alexandra Nevskogo 2",
+            "Ligovskiy Prospekt",
+            "Ploshchad Aleksandra Nevskogo 2",
             "Novocherkasskaya",
             "Ladozhskaya",
             "Prospekt Bolshevikov",
             "Ulitsa Dybenko"
         ],
         "5" : [
-            "Komendantsky Prospekt",
+            "Komendantskiy Prospekt",
             "Staraya Derevnya",
-            "Krestovsky Ostrov",
+            "Krestovskiy Ostrov",
             "Chkalovskaya",
             "Sportivnaya",
             "Admiralteyskaya",
@@ -87,7 +87,7 @@
         [
             {
                 "line": 2,
-                "station": "Nevsky Prospekt"
+                "station": "Nevskiy Prospekt"
             },
             {
                 "line": 3,
@@ -141,21 +141,21 @@
         [
             {
                 "line": 3,
-                "station": "Ploshchad Alexandra Nevskogo 1"
+                "station": "Ploshchad Aleksandra Nevskogo 1"
             },
             {
                 "line": 4,
-                "station": "Ploshchad Alexandra Nevskogo 2"
+                "station": "Ploshchad Aleksandra Nevskogo 2"
             }
         ],
         [
             {
                 "line": 1,
-                "station": "Tekhnologichesky Institut 1"
+                "station": "Tekhnologicheskiy Institut 1"
             },
             {
                 "line": 2,
-                "station": "Tekhnologichesky Institut 2"
+                "station": "Tekhnologicheskiy Institut 2"
             }
         ]
     ]

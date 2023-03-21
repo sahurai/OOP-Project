@@ -14,7 +14,7 @@ public class JsonParser {
 
     public void parse() {
         JSONParser parser = new JSONParser();
-        try (FileReader reader = new FileReader("src/Structure/MetroMap.json")) {
+        try (FileReader reader = new FileReader("resources/MetroMap.json")) {
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 

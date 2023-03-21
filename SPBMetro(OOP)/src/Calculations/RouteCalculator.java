@@ -81,6 +81,10 @@ public class RouteCalculator {
 
     }
 
+    public List<List<Station>> getStoredRoutes() {
+        return storedRoutes;
+    }
+
     private List<Station> calculateRoute(String startName, String endName) { // (findShortestRoute)Находит кратчайший маршрут между двумя станциями метро по их названиям.
         Station start = findStationByName(startName); // Находим станции по их названиям
         Station end = findStationByName(endName); // Находим станции по их названиям
@@ -96,11 +100,11 @@ public class RouteCalculator {
             System.out.println("This station: " + end.getNameOfStation() + " is closed! You can't get there.");
             return new ArrayList<>();
         }else if(!start.isStatus()){
-            System.out.println("This station: " + start.getNameOfStation() + " is closed! You can't get there.");
+            System.out.println("This station: " + start.getNameOfStation() + " is closed! You can't start from here.");
             return new ArrayList<>();
         }
 
-        // Используем алгоритм поиска в ширину для нахождения кратчайшего маршрута
+        // Используем алгоритм поиска в ширину для нахождения кратчайшего маршрута(BFS)
         Map<Station, Station> previousStationMap = new HashMap<>();
         Set<Station> visitedStations = new HashSet<>();
         Queue<Station> queue = new LinkedList<>();
@@ -176,6 +180,5 @@ public class RouteCalculator {
 
         return route;
     }
-
 }
 

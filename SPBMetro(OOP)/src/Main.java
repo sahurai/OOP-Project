@@ -39,7 +39,7 @@ public class Main {
             }else if(button.equals("3")){
                 System.out.print("Write station:");
                 String stationToChangeStatus = scanner.nextLine();
-                if(calculator.findStationByName(stationToChangeStatus) != null){
+                if(calculator.findStationByName(stationToChangeStatus) != null){ // проверка существует ли станция
                     System.out.println("Current status: " + calculator.findStationByName(stationToChangeStatus).isStatus());
                     System.out.print("Write new status of this station(true/false): ");
                     String newStatusOfStation = scanner.nextLine();
