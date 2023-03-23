@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c8cbb5ea-2cfb-4289-bc00-6d2406ee058c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/out/production/SPBMetro(OOP)/GUI/FindRoute.class" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/out/production/SPBMetro(OOP)/GUI/FindRoute.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/out/production/SPBMetro(OOP)/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/out/production/SPBMetro(OOP)/GUI/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/out/production/SPBMetro(OOP)/GUI/SetStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/out/production/SPBMetro(OOP)/GUI/SetStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/resources/map.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/src/Images/map.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/src/Calculations/RouteCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/src/Calculations/RouteCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/src/GUI/FindRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/src/GUI/FindRoute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/src/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/src/GUI/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP)/src/GUI/SetStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP)/src/GUI/SetStatus.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2NQooSu6ZfsMnOoywg6vC2Loj4n" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8cbb5ea-2cfb-4289-bc00-6d2406ee058c" name="Default Changelist" comment="" />
+      <created>1679605842424</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679605842424</updated>
+      <workItem from="1679605846178" duration="8000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

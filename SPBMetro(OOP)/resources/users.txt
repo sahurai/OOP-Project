@@ -1,0 +1,4 @@
+neadmin:neadmin:false
+admin:admin:true
+mama:papa:false
+sahurai:1111:false

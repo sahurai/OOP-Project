@@ -3,9 +3,12 @@ package GUI;
 import Calculations.*;
 import Structure.*;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class SetStatus extends Stage {
@@ -13,11 +16,11 @@ public class SetStatus extends Stage {
     public SetStatus(RouteCalculator calculator) {
         // Название окна
         setTitle("Set Status of Station");
+        getIcons().add(new Image("/Images/logo.png")); // Установка логотипа метро
         TextField stationField = new TextField(); // Текстовое поле для ввода названия станции
         Label currentStatusLabel = new Label();  // Метка, отображающая текущий статус станции
         Button closeButton = new Button("Close"); // Кнопка "Закрыть", меняющая статус станции на "закрыта"
         Button openButton = new Button("Open"); // Кнопка "Открыть", меняющая статус станции на "открыта"
-        Button exitButton = new Button("Exit"); // Кнопка "Выход", закрывающая окно
 
         // Обработчик нажатия на кнопку "Закрыть"
         closeButton.setOnAction(e -> setStatus(calculator, stationField.getText(), currentStatusLabel, false));
@@ -25,21 +28,30 @@ public class SetStatus extends Stage {
         // Обработчик нажатия на кнопку "Открыть"
         openButton.setOnAction(e -> setStatus(calculator, stationField.getText(), currentStatusLabel, true));
 
-        // Обработчик нажатия на кнопку "Выход"
-        exitButton.setOnAction(e -> close());
-
         // Контейнер для элементов управления
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.add(new Label("Station:"), 0, 0); // Метка для текстового поля
-        grid.add(stationField, 1, 0); // Текстовое поле для ввода названия станции
-        grid.add(new Label("Current Status:"), 0, 1); // Метка для отображения текущего статуса станции
-        grid.add(currentStatusLabel, 1, 1); // Метка для отображения текущего статуса станции
-        grid.add(closeButton, 0, 2); // Кнопка "Закрыть"
-        grid.add(openButton, 1, 2); // Кнопка "Открыть"
-        grid.add(exitButton, 0, 3); // Кнопка "Выход"
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(10, 10, 10, 10));
+
+        HBox stationFieldBox = new HBox(10); // сюда вводить станцию
+        stationFieldBox.setAlignment(Pos.CENTER_LEFT);
+        stationFieldBox.getChildren().addAll(new Label("Station:"), stationField);
+
+        HBox currentStatusBox = new HBox(10); // статус станции
+        currentStatusBox.setAlignment(Pos.CENTER_LEFT);
+        currentStatusBox.getChildren().addAll(new Label("Current Status:"), currentStatusLabel);
+
+        HBox closeButtonBox = new HBox(10); // кнопка закрытия станции
+        closeButtonBox.setAlignment(Pos.CENTER_RIGHT);
+        closeButtonBox.getChildren().add(closeButton);
+
+        HBox openButtonBox = new HBox(10); // кнопка открытия станции
+        openButtonBox.setAlignment(Pos.CENTER_LEFT);
+        openButtonBox.getChildren().add(openButton);
+
+        HBox buttonsBox = new HBox();
+        buttonsBox.setSpacing(5);
+        buttonsBox.getChildren().addAll(closeButtonBox, openButtonBox);
+        vbox.getChildren().addAll(stationFieldBox, currentStatusBox, buttonsBox);
 
         // Обработчик изменения текста в текстовом поле
         stationField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -55,7 +67,7 @@ public class SetStatus extends Stage {
             }
         });
 
-        Scene scene = new Scene(grid, 300, 150);
+        Scene scene = new Scene(vbox, 300, 120);
         setScene(scene);
     }
 

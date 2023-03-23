@@ -2,10 +2,14 @@ package GUI;
 
 import Calculations.*;
 import Structure.*;
+import Users.User;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -17,35 +21,46 @@ public class FindRoute extends Stage {
     private Button findRouteBtn;
     private TextArea resultTextArea;
 
-    public FindRoute(RouteCalculator calculator, TextArea resultTextArea) {
+    public FindRoute(RouteCalculator calculator, TextArea resultTextArea, User user) {
         this.calculator = calculator;
         this.resultTextArea = resultTextArea;
         setTitle("Find Route");
-
+        getIcons().add(new Image("/Images/logo.png")); // Установка логотипа метро
         startStationField = new TextField();
         endStationField = new TextField();
         findRouteBtn = new Button("Find route");
 
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.add(new Label("Start station:"), 0, 0);
-        grid.add(startStationField, 1, 0);
-        grid.add(new Label("End station:"), 0, 1);
-        grid.add(endStationField, 1, 1);
-        grid.add(findRouteBtn, 0, 2);
+        // Контейнер для элементов управления
+        VBox vbox = new VBox(10);
+        vbox.setPadding(new Insets(10, 10, 10, 10));
+
+        HBox startStationFieldBox = new HBox(10); // станция начала
+        startStationFieldBox.setAlignment(Pos.CENTER_LEFT);
+        startStationFieldBox.getChildren().addAll(new Label("Start station:"), startStationField);
+
+        HBox endStationFieldBox = new HBox(10); // станция конца
+        endStationFieldBox.setAlignment(Pos.CENTER_LEFT);
+        endStationFieldBox.getChildren().addAll(new Label("End station: "), endStationField);
+
+        HBox findRouteBtnBox = new HBox(); // кнопка начала поиска
+        findRouteBtnBox.getChildren().add(findRouteBtn);
+
+        vbox.getChildren().addAll(startStationFieldBox, endStationFieldBox, findRouteBtnBox);
+
 
         findRouteBtn.setOnAction(e -> {
             String start = startStationField.getText();
             String end = endStationField.getText();
-            List<Station> route = calculator.findShortestRoute(start, end);
+            List<Station> route = calculator.findShortestRoute(start, end); // считаем путь
+            if(!route.isEmpty()){
+                user.getStoredRoutes().add(route); // добавляем путь в список в классе
+            }
             String result = printRoute(route);
-            resultTextArea.setText(result);
+            resultTextArea.setText(result); // выписываем результат
             close();
         });
 
-        Scene scene = new Scene(grid, 300, 150);
+        Scene scene = new Scene(vbox, 300, 120);
         setScene(scene);
     }
 
