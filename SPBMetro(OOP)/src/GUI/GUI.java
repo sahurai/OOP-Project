@@ -11,12 +11,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +39,7 @@ public class GUI extends Application {
         calculator = new RouteCalculator(parser.stations, parser.connections);
         outputArea = new TextArea();
         outputArea.setEditable(false);
+        outputArea.setPrefHeight(350);
         users = new HashMap<>();
         loadUsersFromFile(); // при запуске удаляет пропуски
     }
@@ -52,6 +60,21 @@ public class GUI extends Application {
     private void showLoginMenu(Stage primaryStage) {
         VBox vbox = new VBox(10);
 
+        vbox.setStyle("-fx-background-color: #ffffff;");
+
+        //картинка лого сверху
+        ImageView logo = new ImageView(new Image("Images/logo.png"));
+        logo.setFitWidth(200);
+        logo.setFitHeight(200);
+        logo.setPreserveRatio(true); // сохраняем пропорции изображения
+        logo.setSmooth(true); // включаем сглаживание
+
+        //текст к лого
+        Text text = new Text("SPB Metro");
+        text.setFont(Font.font("Arial", 30));
+        text.setFill(Paint.valueOf("#2a4b8a"));
+        text.setTextAlignment(TextAlignment.CENTER);
+
         Button logInAsUserBtn = new Button("Log in as user");
         logInAsUserBtn.setOnAction(e -> showLoginWindow(primaryStage, false));
 
@@ -68,11 +91,11 @@ public class GUI extends Application {
         logInAsUserBtn.setMinWidth(200);
         logInAsGuestBtn.setMinWidth(200);
 
-        vbox.getChildren().addAll(logInAsUserBtn, logInAsGuestBtn, logInAsAdminBtn);
+        vbox.getChildren().addAll(logo,text, logInAsUserBtn, logInAsGuestBtn, logInAsAdminBtn);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(10));
 
-        Scene scene = new Scene(vbox, 300, 150);
+        Scene scene = new Scene(vbox, 300, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     } // Меню выбора входа
@@ -109,16 +132,29 @@ public class GUI extends Application {
         Button signInBtn = new Button("Sign in");
         signInBtn.setOnAction(e -> showSignInWindow(primaryStage));
 
-        Label singInLabel = new Label("Don't have account?");
+        Text singInText = new Text("Don't have account?");
+
+        VBox singIn = new VBox();
+        singIn.getChildren().addAll(singInText,signInBtn);
+        singIn.setAlignment(Pos.CENTER);
+        singIn.setSpacing(5);
+
+        HBox loginAndBack = new HBox();
+        loginAndBack.getChildren().addAll(loginBtn, backBtn);
+        loginAndBack.setSpacing(5);
+
+        Scene scene;
+
         if(isAdmin == false){
-            vbox.getChildren().addAll(loginField, passwordField, loginBtn, singInLabel, signInBtn, backBtn);
+            vbox.getChildren().addAll(loginField, passwordField, loginAndBack, singIn);
             vbox.setPadding(new Insets(10));
+            scene = new Scene(vbox, 300, 170);
         }else{
-            vbox.getChildren().addAll(loginField, passwordField, loginBtn, backBtn);
+            vbox.getChildren().addAll(loginField, passwordField, loginAndBack);
             vbox.setPadding(new Insets(10));
+            scene = new Scene(vbox, 300, 120);
         }
 
-        Scene scene = new Scene(vbox, 300, 220);
         primaryStage.setScene(scene);
         primaryStage.show();
     } // логгин
@@ -152,12 +188,12 @@ public class GUI extends Application {
         });
 
         Button backBtn = new Button("Back");
-        backBtn.setOnAction(e -> showLoginMenu(primaryStage));
+        backBtn.setOnAction(e -> showLoginWindow(primaryStage, false));
 
         vbox.getChildren().addAll(loginField, passwordField, registerBtn, backBtn);
         vbox.setPadding(new Insets(10));
 
-        Scene scene = new Scene(vbox, 300, 200);
+        Scene scene = new Scene(vbox, 300, 150);
         primaryStage.setScene(scene);
         primaryStage.show();
     } // регистрация
@@ -200,22 +236,38 @@ public class GUI extends Application {
         Button exitBtn = new Button("Exit"); // кнопка Exit
         exitBtn.setOnAction(e-> primaryStage.close());
 
+        HBox routeAndMap = new HBox();
+        routeAndMap.getChildren().addAll(findRouteBtn,showImageBtn);
+        routeAndMap.setSpacing(5);
+
+        HBox adminSettingsAndStatus = new HBox();
+        adminSettingsAndStatus.getChildren().addAll(adminSettingsBtn, setStatusBtn);
+        adminSettingsAndStatus.setSpacing(5);
+
+        HBox exitAndLogOut = new HBox();
+        exitAndLogOut.getChildren().addAll(logOutBtn, exitBtn);
+        exitAndLogOut.setSpacing(5);
+
         VBox vbox = new VBox();
         vbox.setSpacing(5);
 
+        Scene scene;
+
         if (user instanceof Admin){
-            vbox.getChildren().addAll(findRouteBtn, historyBtn, setStatusBtn, showImageBtn, outputArea,adminSettingsBtn, logOutBtn, exitBtn);
+            vbox.getChildren().addAll(routeAndMap, historyBtn, outputArea, adminSettingsAndStatus, exitAndLogOut);
             vbox.setPadding(new Insets(10)); // Установка отступов
+            scene = new Scene(vbox, 500, 500);
         } else if(user instanceof Guest){
-            vbox.getChildren().addAll(findRouteBtn, showImageBtn, outputArea, logOutBtn, exitBtn);
+            vbox.getChildren().addAll(routeAndMap, outputArea, exitAndLogOut);
             vbox.setPadding(new Insets(10)); // Установка отступов
+            scene = new Scene(vbox, 500, 445);
         } else{
-            vbox.getChildren().addAll(findRouteBtn, historyBtn, showImageBtn, outputArea, logOutBtn, exitBtn);
+            vbox.getChildren().addAll(routeAndMap, historyBtn, outputArea, exitAndLogOut);
             vbox.setPadding(new Insets(10)); // Установка отступов
+            scene = new Scene(vbox, 500, 470);
         }
 
         // Создание сцены и установка ее для primaryStage
-        Scene scene = new Scene(vbox, 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show(); // Отображение главного окна
     }
@@ -333,7 +385,7 @@ public class GUI extends Application {
         });
 
         // Создание вертикального контейнера для размещения списка пользователей и кнопки
-        VBox vbox = new VBox(10, userListView, setAdminButton, removeAdminStatusButton, removeUserButton);
+        VBox vbox = new VBox(5, userListView, setAdminButton, removeAdminStatusButton, removeUserButton);
         vbox.setPadding(new Insets(10));
 
         // Создание сцены и установка ее

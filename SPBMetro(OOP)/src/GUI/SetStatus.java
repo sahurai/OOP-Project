@@ -4,6 +4,7 @@ import Calculations.*;
 import Structure.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -11,7 +12,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SetStatus extends Stage {
+    private String[] stationsAsString = {"Devyatkino", "Grazhdanskiy Prospekt", "Akademicheskaya", "Politekhnicheskaya", "Ploschad Muzhestva", "Lesnaya", "Vyborgskaya", "Ploshchad Lenina", "Chernyshevskaya", "Ploshchad Vosstaniya", "Vladimirskaya", "Pushkinskaya", "Tekhnologicheskiy Institut 1", "Baltiyskaya", "Narvskaya", "Kirovskiy Zavod", "Avtovo", "Leninskiy Prospekt", "Prospekt Veteranov", "Parnas", "Prospekt Prosvescheniya", "Ozerki", "Udelnaya", "Pionerskaya", "Chyornaya Rechka", "Petrogradskaya", "Gorkovskaya", "Nevskiy Prospekt", "Sennaya Ploshchad", "Tekhnologicheskiy Institut 2", "Frunzenskaya", "Moskovskiye Vorota", "Elektrosila", "Park Pobedy", "Moskovskaya", "Zvyozdnaya", "Kupchino", "Begovaya", "Zenit", "Primorskaya", "Vasileostrovskaya", "Gostiny Dvor", "Mayakovskaya", "Ploshchad Aleksandra Nevskogo 1", "Yelizarovskaya", "Lomonosovskaya", "Proletarskaya", "Obukhovo", "Rybatskoye", "Spasskaya", "Dostoyevskaya", "Ligovskiy Prospekt", "Ploshchad Aleksandra Nevskogo 2", "Novocherkasskaya", "Ladozhskaya", "Prospekt Bolshevikov", "Ulitsa Dybenko", "Komendantskiy Prospekt", "Staraya Derevnya", "Krestovskiy Ostrov", "Chkalovskaya", "Sportivnaya", "Admiralteyskaya", "Sadovaya", "Zvenigorodskaya", "Obvodny Kanal", "Volkovskaya", "Bukharestskaya", "Mezhdunarodnaya", "Prospekt Slavy", "Dunayskaya", "Shushary"};
 
     public SetStatus(RouteCalculator calculator) {
         // Название окна
@@ -21,6 +26,39 @@ public class SetStatus extends Stage {
         Label currentStatusLabel = new Label();  // Метка, отображающая текущий статус станции
         Button closeButton = new Button("Close"); // Кнопка "Закрыть", меняющая статус станции на "закрыта"
         Button openButton = new Button("Open"); // Кнопка "Открыть", меняющая статус станции на "открыта"
+        ContextMenu contextMenu = new ContextMenu();
+        List<String> matchingData = new ArrayList<>();
+
+        //автозаполнение
+        for (String s : stationsAsString) {
+            MenuItem item = new MenuItem(s);
+            item.setOnAction(event -> stationField.setText(s));
+            contextMenu.getItems().add(item);
+        }
+        stationField.setOnKeyReleased(event -> {
+            String enteredText = stationField.getText().toLowerCase();
+            matchingData.clear();
+            contextMenu.getItems().clear();
+            if (!enteredText.isEmpty()) { // проверяем на пустоту
+                for (String s : stationsAsString) {
+                    if (s.toLowerCase().startsWith(enteredText)) {
+                        matchingData.add(s);
+                    }
+                }
+                for (String s : matchingData) {
+                    MenuItem item = new MenuItem(s);
+                    item.setOnAction(some -> stationField.setText(s));
+                    contextMenu.getItems().add(item);
+                }
+                if (!matchingData.isEmpty()) {
+                    contextMenu.show(stationField, Side.BOTTOM, 0, 0);
+                } else {
+                    contextMenu.hide();
+                }
+            } else {
+                contextMenu.hide(); // скрываем контекстное меню, если введен пустой текст
+            }
+        });
 
         // Обработчик нажатия на кнопку "Закрыть"
         closeButton.setOnAction(e -> setStatus(calculator, stationField.getText(), currentStatusLabel, false));

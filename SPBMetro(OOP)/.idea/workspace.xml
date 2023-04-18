@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69cf6df5-7236-4878-9e15-c3db5dc3f701" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Images/newlogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_9_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_9_0_javadoc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jackson_core_2_14_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jackson_core_2_14_2_javadoc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/jackson_databind_2_9_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/json_20220924_javadoc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP).iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP).iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/FindRoute.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/FindRoute.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/SetStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/SetStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/map.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/Images/map.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calculations/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/JsonParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/FindRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/FindRoute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/SetStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SetStatus.java" afterDir="false" />
@@ -32,12 +41,14 @@
   <component name="ProjectId" id="2MxZSAW9WbiW460sYZRkjCOywFn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="C:/Program Files/JavaFX/javafx-sdk-19.0.2.1/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/swingx-1.6.1.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -111,7 +122,14 @@
       <workItem from="1679481472833" duration="4391000" />
       <workItem from="1679502559458" duration="6796000" />
       <workItem from="1679512245514" duration="454000" />
-      <workItem from="1679605877486" duration="165000" />
+      <workItem from="1679605877486" duration="344000" />
+      <workItem from="1680094492394" duration="38000" />
+      <workItem from="1680105896889" duration="2180000" />
+      <workItem from="1680451360937" duration="51000" />
+      <workItem from="1681232205569" duration="1894000" />
+      <workItem from="1681307844726" duration="601000" />
+      <workItem from="1681323128214" duration="5000" />
+      <workItem from="1681827317245" duration="13807000" />
     </task>
     <servers />
   </component>

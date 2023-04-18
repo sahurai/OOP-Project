@@ -3,8 +3,10 @@ package GUI;
 import Calculations.*;
 import Structure.*;
 import Users.User;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -12,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindRoute extends Stage {
@@ -20,6 +23,7 @@ public class FindRoute extends Stage {
     private TextField endStationField;
     private Button findRouteBtn;
     private TextArea resultTextArea;
+    private String[] stationsAsString = {"Devyatkino", "Grazhdanskiy Prospekt", "Akademicheskaya", "Politekhnicheskaya", "Ploschad Muzhestva", "Lesnaya", "Vyborgskaya", "Ploshchad Lenina", "Chernyshevskaya", "Ploshchad Vosstaniya", "Vladimirskaya", "Pushkinskaya", "Tekhnologicheskiy Institut 1", "Baltiyskaya", "Narvskaya", "Kirovskiy Zavod", "Avtovo", "Leninskiy Prospekt", "Prospekt Veteranov", "Parnas", "Prospekt Prosvescheniya", "Ozerki", "Udelnaya", "Pionerskaya", "Chyornaya Rechka", "Petrogradskaya", "Gorkovskaya", "Nevskiy Prospekt", "Sennaya Ploshchad", "Tekhnologicheskiy Institut 2", "Frunzenskaya", "Moskovskiye Vorota", "Elektrosila", "Park Pobedy", "Moskovskaya", "Zvyozdnaya", "Kupchino", "Begovaya", "Zenit", "Primorskaya", "Vasileostrovskaya", "Gostiny Dvor", "Mayakovskaya", "Ploshchad Aleksandra Nevskogo 1", "Yelizarovskaya", "Lomonosovskaya", "Proletarskaya", "Obukhovo", "Rybatskoye", "Spasskaya", "Dostoyevskaya", "Ligovskiy Prospekt", "Ploshchad Aleksandra Nevskogo 2", "Novocherkasskaya", "Ladozhskaya", "Prospekt Bolshevikov", "Ulitsa Dybenko", "Komendantskiy Prospekt", "Staraya Derevnya", "Krestovskiy Ostrov", "Chkalovskaya", "Sportivnaya", "Admiralteyskaya", "Sadovaya", "Zvenigorodskaya", "Obvodny Kanal", "Volkovskaya", "Bukharestskaya", "Mezhdunarodnaya", "Prospekt Slavy", "Dunayskaya", "Shushary"};
 
     public FindRoute(RouteCalculator calculator, TextArea resultTextArea, User user) {
         this.calculator = calculator;
@@ -29,6 +33,64 @@ public class FindRoute extends Stage {
         startStationField = new TextField();
         endStationField = new TextField();
         findRouteBtn = new Button("Find route");
+        ContextMenu contextMenu = new ContextMenu();
+        List<String> matchingData = new ArrayList<>();
+
+        for (String s : stationsAsString) {
+            MenuItem item = new MenuItem(s);
+            item.setOnAction(event -> startStationField.setText(s));
+            contextMenu.getItems().add(item);
+        }
+
+        startStationField.setOnKeyReleased(event -> {
+            String enteredText = startStationField.getText().toLowerCase();
+            matchingData.clear();
+            contextMenu.getItems().clear();
+            if (!enteredText.isEmpty()) { // проверяем на пустоту
+                for (String s : stationsAsString) {
+                    if (s.toLowerCase().startsWith(enteredText)) {
+                        matchingData.add(s);
+                    }
+                }
+                for (String s : matchingData) {
+                    MenuItem item = new MenuItem(s);
+                    item.setOnAction(some -> startStationField.setText(s));
+                    contextMenu.getItems().add(item);
+                }
+                if (!matchingData.isEmpty()) {
+                    contextMenu.show(startStationField, Side.BOTTOM, 0, 0);
+                } else {
+                    contextMenu.hide();
+                }
+            } else {
+                contextMenu.hide(); // скрываем контекстное меню, если введен пустой текст
+            }
+        });
+
+        endStationField.setOnKeyReleased(event -> {
+            String enteredText = endStationField.getText().toLowerCase();
+            matchingData.clear();
+            contextMenu.getItems().clear();
+            if (!enteredText.isEmpty()) { // проверяем на пустоту
+                for (String s : stationsAsString) {
+                    if (s.toLowerCase().startsWith(enteredText)) {
+                        matchingData.add(s);
+                    }
+                }
+                for (String s : matchingData) {
+                    MenuItem item = new MenuItem(s);
+                    item.setOnAction(some -> endStationField.setText(s));
+                    contextMenu.getItems().add(item);
+                }
+                if (!matchingData.isEmpty()) {
+                    contextMenu.show(endStationField, Side.BOTTOM, 0, 0);
+                } else {
+                    contextMenu.hide();
+                }
+            } else {
+                contextMenu.hide(); // скрываем контекстное меню, если введен пустой текст
+            }
+        });
 
         // Контейнер для элементов управления
         VBox vbox = new VBox(10);
@@ -47,7 +109,6 @@ public class FindRoute extends Stage {
 
         vbox.getChildren().addAll(startStationFieldBox, endStationFieldBox, findRouteBtnBox);
 
-
         findRouteBtn.setOnAction(e -> {
             String start = startStationField.getText();
             String end = endStationField.getText();
@@ -63,6 +124,7 @@ public class FindRoute extends Stage {
         Scene scene = new Scene(vbox, 300, 120);
         setScene(scene);
     }
+
 
     private String printRoute(List<Station> route) {
         if (route.isEmpty()) {

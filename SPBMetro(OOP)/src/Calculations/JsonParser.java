@@ -52,5 +52,4 @@ public class JsonParser {
             e.printStackTrace();
         }
     }
-
 }
