@@ -1,7 +1,5 @@
 neadmin:neadmin:false
 admin:admin:true
 mama:papa:false
-sahurai:1111:false
-danya:1111:false
-::false
 tyty:2222:false
+sahurai:1111:false

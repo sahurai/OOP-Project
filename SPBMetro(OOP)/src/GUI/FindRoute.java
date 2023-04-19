@@ -4,6 +4,7 @@ import Calculations.*;
 import Structure.*;
 import Users.User;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
@@ -22,12 +23,10 @@ public class FindRoute extends Stage {
     private TextField startStationField;
     private TextField endStationField;
     private Button findRouteBtn;
-    private TextArea resultTextArea;
     private String[] stationsAsString = {"Devyatkino", "Grazhdanskiy Prospekt", "Akademicheskaya", "Politekhnicheskaya", "Ploschad Muzhestva", "Lesnaya", "Vyborgskaya", "Ploshchad Lenina", "Chernyshevskaya", "Ploshchad Vosstaniya", "Vladimirskaya", "Pushkinskaya", "Tekhnologicheskiy Institut 1", "Baltiyskaya", "Narvskaya", "Kirovskiy Zavod", "Avtovo", "Leninskiy Prospekt", "Prospekt Veteranov", "Parnas", "Prospekt Prosvescheniya", "Ozerki", "Udelnaya", "Pionerskaya", "Chyornaya Rechka", "Petrogradskaya", "Gorkovskaya", "Nevskiy Prospekt", "Sennaya Ploshchad", "Tekhnologicheskiy Institut 2", "Frunzenskaya", "Moskovskiye Vorota", "Elektrosila", "Park Pobedy", "Moskovskaya", "Zvyozdnaya", "Kupchino", "Begovaya", "Zenit", "Primorskaya", "Vasileostrovskaya", "Gostiny Dvor", "Mayakovskaya", "Ploshchad Aleksandra Nevskogo 1", "Yelizarovskaya", "Lomonosovskaya", "Proletarskaya", "Obukhovo", "Rybatskoye", "Spasskaya", "Dostoyevskaya", "Ligovskiy Prospekt", "Ploshchad Aleksandra Nevskogo 2", "Novocherkasskaya", "Ladozhskaya", "Prospekt Bolshevikov", "Ulitsa Dybenko", "Komendantskiy Prospekt", "Staraya Derevnya", "Krestovskiy Ostrov", "Chkalovskaya", "Sportivnaya", "Admiralteyskaya", "Sadovaya", "Zvenigorodskaya", "Obvodny Kanal", "Volkovskaya", "Bukharestskaya", "Mezhdunarodnaya", "Prospekt Slavy", "Dunayskaya", "Shushary"};
 
-    public FindRoute(RouteCalculator calculator, TextArea resultTextArea, User user) {
+    public FindRoute(RouteCalculator calculator, ListView resultTextArea, User user) {
         this.calculator = calculator;
-        this.resultTextArea = resultTextArea;
         setTitle("Find Route");
         getIcons().add(new Image("/Images/logo.png")); // Установка логотипа метро
         startStationField = new TextField();
@@ -36,12 +35,12 @@ public class FindRoute extends Stage {
         ContextMenu contextMenu = new ContextMenu();
         List<String> matchingData = new ArrayList<>();
 
+        //автоподстановка
         for (String s : stationsAsString) {
             MenuItem item = new MenuItem(s);
             item.setOnAction(event -> startStationField.setText(s));
             contextMenu.getItems().add(item);
         }
-
         startStationField.setOnKeyReleased(event -> {
             String enteredText = startStationField.getText().toLowerCase();
             matchingData.clear();
@@ -66,7 +65,6 @@ public class FindRoute extends Stage {
                 contextMenu.hide(); // скрываем контекстное меню, если введен пустой текст
             }
         });
-
         endStationField.setOnKeyReleased(event -> {
             String enteredText = endStationField.getText().toLowerCase();
             matchingData.clear();
@@ -117,14 +115,15 @@ public class FindRoute extends Stage {
                 user.getStoredRoutes().add(route); // добавляем путь в список в классе
             }
             String result = printRoute(route);
-            resultTextArea.setText(result); // выписываем результат
+            String[] lines = result.split("\n");
+            ObservableList<String> items = FXCollections.observableArrayList(lines);
+            resultTextArea.setItems(items);
             close();
         });
 
         Scene scene = new Scene(vbox, 300, 120);
         setScene(scene);
     }
-
 
     private String printRoute(List<Station> route) {
         if (route.isEmpty()) {
@@ -143,4 +142,5 @@ public class FindRoute extends Stage {
 
         return result;
     }
+
 }

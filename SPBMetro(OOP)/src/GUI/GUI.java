@@ -5,6 +5,7 @@ import Users.*;
 import Structure.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -23,23 +23,22 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class GUI extends Application {
     private final RouteCalculator calculator;
-    private final TextArea outputArea;
+    private final ListView outputList;
     private Map<String, User> users;
 
     public GUI() {
         JsonParser parser = new JsonParser();
         parser.parse();
         calculator = new RouteCalculator(parser.stations, parser.connections);
-        outputArea = new TextArea();
-        outputArea.setEditable(false);
-        outputArea.setPrefHeight(350);
+        outputList = new ListView();
+        outputList.setEditable(false);
+        outputList.setPrefHeight(350);
         users = new HashMap<>();
         loadUsersFromFile(); // при запуске удаляет пропуски
     }
@@ -173,7 +172,20 @@ public class GUI extends Application {
             String login = loginField.getText();
             String password = passwordField.getText();
 
-            if (users.containsKey(login)) {
+            // проверяем условия логина и пароля
+            if (login.isEmpty() || password.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Empty fields");
+                alert.setContentText("Please fill in all fields.");
+                alert.showAndWait();
+            } else if (login.length() < 4 || password.length() < 4) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid login or password");
+                alert.setContentText("Login must be at least 4 characters long, and password must be at least 4 characters long.");
+                alert.showAndWait();
+            } else if (users.containsKey(login)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("User already exists");
@@ -200,7 +212,8 @@ public class GUI extends Application {
 
     // Все остальные методы, когда уже зашел в акк
     private void showMainScreen(Stage primaryStage, User user) {
-        outputArea.clear(); // очищаем консоль от прошлых выводов
+        //очистить вывод
+        outputList.getItems().clear();
 
         // Создание кнопок и установка обработчиков событий для них
         Button findRouteBtn = new Button("Find route"); // кнопка Find Route
@@ -210,8 +223,9 @@ public class GUI extends Application {
 
         Button historyBtn = new Button("Get history of routes"); // кнопка History
         historyBtn.setOnAction(e -> {
-            outputArea.clear();
-            outputArea.setText(printHistoryOfRoutes(calculator, user.getStoredRoutes())); // берем историю из класса User и калькулятор нужен для подсчета времени
+            outputList.getItems().clear();
+            ObservableList<String> items = FXCollections.observableArrayList(printHistoryOfRoutes(calculator, user.getStoredRoutes()).split("\n"));
+            outputList.setItems(items); // берем историю из класса User и калькулятор нужен для подсчета времени
         });
         historyBtn.setDisable(!user.canGetHistoryOfRoutes());
         historyBtn.setMinWidth(130);
@@ -254,15 +268,15 @@ public class GUI extends Application {
         Scene scene;
 
         if (user instanceof Admin){
-            vbox.getChildren().addAll(routeAndMap, historyBtn, outputArea, adminSettingsAndStatus, exitAndLogOut);
+            vbox.getChildren().addAll(routeAndMap, historyBtn, outputList, adminSettingsAndStatus, exitAndLogOut);
             vbox.setPadding(new Insets(10)); // Установка отступов
             scene = new Scene(vbox, 500, 500);
         } else if(user instanceof Guest){
-            vbox.getChildren().addAll(routeAndMap, outputArea, exitAndLogOut);
+            vbox.getChildren().addAll(routeAndMap, outputList, exitAndLogOut);
             vbox.setPadding(new Insets(10)); // Установка отступов
             scene = new Scene(vbox, 500, 445);
         } else{
-            vbox.getChildren().addAll(routeAndMap, historyBtn, outputArea, exitAndLogOut);
+            vbox.getChildren().addAll(routeAndMap, historyBtn, outputList, exitAndLogOut);
             vbox.setPadding(new Insets(10)); // Установка отступов
             scene = new Scene(vbox, 500, 470);
         }
@@ -395,7 +409,7 @@ public class GUI extends Application {
     } // настройки админа
 
     private void showFindRouteWindow(User user) {
-        FindRoute findRouteWindow = new FindRoute(calculator, outputArea, user);
+        FindRoute findRouteWindow = new FindRoute(calculator, outputList, user);
         findRouteWindow.show();
     } //поиск пути
 

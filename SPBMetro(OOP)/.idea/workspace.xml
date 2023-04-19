@@ -2,24 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69cf6df5-7236-4878-9e15-c3db5dc3f701" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Images/newlogo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_9_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_9_0_javadoc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jackson_core_2_14_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jackson_core_2_14_2_javadoc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jackson_databind_2_9_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/json_20220924_javadoc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP).iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP).iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/FindRoute.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/FindRoute.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/SetStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/SetStatus.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calculations/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/JsonParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/FindRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/FindRoute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/SetStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SetStatus.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +118,10 @@
       <workItem from="1681232205569" duration="1894000" />
       <workItem from="1681307844726" duration="601000" />
       <workItem from="1681323128214" duration="5000" />
-      <workItem from="1681827317245" duration="13807000" />
+      <workItem from="1681827317245" duration="16905000" />
+      <workItem from="1681895542202" duration="4908000" />
+      <workItem from="1681912666486" duration="2381000" />
+      <workItem from="1681925892265" duration="1210000" />
     </task>
     <servers />
   </component>
