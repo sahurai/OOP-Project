@@ -48,6 +48,10 @@ public class User {
         return true;
     }
 
+    public void setPassword(String newPassword){
+        this.password = newPassword;
+    }
+
     @Override
     public String toString() {
         return login + (canSetNewAdmin() ? " Status: admin" : " Status: user");

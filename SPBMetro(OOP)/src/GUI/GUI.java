@@ -26,6 +26,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GUI extends Application {
     private final RouteCalculator calculator;
@@ -114,7 +115,7 @@ public class GUI extends Application {
             String password = passwordField.getText();
             User user = users.get(login);
 
-            if (user != null && user.getPassword().equals(password) && (isAdmin == (user instanceof Admin))) {
+            if (user != null && user.getPassword().equals(password) && (isAdmin == (user instanceof Admin))) { // мб сделать, чтобы админ тоже мог заходить, как дефолтный юзер
                 showMainScreen(primaryStage, user);
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -162,10 +163,10 @@ public class GUI extends Application {
         VBox vbox = new VBox(10);
 
         TextField loginField = new TextField();
-        loginField.setPromptText("Login");
+        loginField.setPromptText("Login(min. 4 symbols)");
 
         PasswordField passwordField = new PasswordField();
-        passwordField.setPromptText("Password");
+        passwordField.setPromptText("Password(min. 4 symbols)");
 
         Button registerBtn = new Button("Register");
         registerBtn.setOnAction(e -> {
@@ -202,10 +203,14 @@ public class GUI extends Application {
         Button backBtn = new Button("Back");
         backBtn.setOnAction(e -> showLoginWindow(primaryStage, false));
 
-        vbox.getChildren().addAll(loginField, passwordField, registerBtn, backBtn);
+        HBox registerAndBack = new HBox();
+        registerAndBack.getChildren().addAll(registerBtn,backBtn);
+        registerAndBack.setSpacing(5);
+
+        vbox.getChildren().addAll(loginField, passwordField, registerAndBack);
         vbox.setPadding(new Insets(10));
 
-        Scene scene = new Scene(vbox, 300, 150);
+        Scene scene = new Scene(vbox, 300, 120);
         primaryStage.setScene(scene);
         primaryStage.show();
     } // регистрация
@@ -250,6 +255,9 @@ public class GUI extends Application {
         Button exitBtn = new Button("Exit"); // кнопка Exit
         exitBtn.setOnAction(e-> primaryStage.close());
 
+        Button changePasswordBtn = new Button("Change password");
+        changePasswordBtn.setOnAction(e -> showChangePasswordWindow(user));
+
         HBox routeAndMap = new HBox();
         routeAndMap.getChildren().addAll(findRouteBtn,showImageBtn);
         routeAndMap.setSpacing(5);
@@ -258,9 +266,9 @@ public class GUI extends Application {
         adminSettingsAndStatus.getChildren().addAll(adminSettingsBtn, setStatusBtn);
         adminSettingsAndStatus.setSpacing(5);
 
-        HBox exitAndLogOut = new HBox();
-        exitAndLogOut.getChildren().addAll(logOutBtn, exitBtn);
-        exitAndLogOut.setSpacing(5);
+        HBox exitLogOutAndChangePassword = new HBox();
+        exitLogOutAndChangePassword.getChildren().addAll(logOutBtn, exitBtn, changePasswordBtn);
+        exitLogOutAndChangePassword.setSpacing(5);
 
         VBox vbox = new VBox();
         vbox.setSpacing(5);
@@ -268,15 +276,18 @@ public class GUI extends Application {
         Scene scene;
 
         if (user instanceof Admin){
-            vbox.getChildren().addAll(routeAndMap, historyBtn, outputList, adminSettingsAndStatus, exitAndLogOut);
+            vbox.getChildren().addAll(routeAndMap, historyBtn, outputList, adminSettingsAndStatus, exitLogOutAndChangePassword);
             vbox.setPadding(new Insets(10)); // Установка отступов
             scene = new Scene(vbox, 500, 500);
         } else if(user instanceof Guest){
-            vbox.getChildren().addAll(routeAndMap, outputList, exitAndLogOut);
+            HBox logOutAndExit = new HBox();
+            logOutAndExit.getChildren().addAll(logOutBtn, exitBtn);
+            logOutAndExit.setSpacing(5);
+            vbox.getChildren().addAll(routeAndMap, outputList, logOutAndExit);
             vbox.setPadding(new Insets(10)); // Установка отступов
             scene = new Scene(vbox, 500, 445);
         } else{
-            vbox.getChildren().addAll(routeAndMap, historyBtn, outputList, exitAndLogOut);
+            vbox.getChildren().addAll(routeAndMap, historyBtn, outputList, exitLogOutAndChangePassword);
             vbox.setPadding(new Insets(10)); // Установка отступов
             scene = new Scene(vbox, 500, 470);
         }
@@ -287,26 +298,23 @@ public class GUI extends Application {
     }
 
     //Работа с юзерами и файлами
-    private void loadUsersFromFile(){
-        try (BufferedReader reader = new BufferedReader(new FileReader("resources/users.txt"))) {
-            // Удаление пустых строк
-            List<String> text = Files.readAllLines(Paths.get("resources/users.txt"));
-            while (text.contains("")){
-                text.remove("");
-            }
+    private void loadUsersFromFile() {
+        try {
+            List<String> text = Files.lines(Paths.get("resources/users.txt"))
+                    .filter(line -> !line.isBlank())
+                    .collect(Collectors.toList());
             Files.write(Paths.get("resources/users.txt"), text);
 
-            // Чтение юзеров
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":");
-                String login = parts[0];
-                String password = parts[1];
-                boolean isAdmin = Boolean.parseBoolean(parts[2]);
+            Files.lines(Paths.get("resources/users.txt"))
+                    .map(line -> line.split(":"))
+                    .forEach(parts -> {
+                        String login = parts[0];
+                        String password = parts[1];
+                        boolean isAdmin = Boolean.parseBoolean(parts[2]);
 
-                User user = isAdmin ? new Admin(login, password) : new User(login, password); // агрегация, полиморфизм
-                users.put(login, user);
-            }
+                        User user = isAdmin ? new Admin(login, password) : new User(login, password);
+                        users.put(login, user);
+                    });
         } catch (IOException e) {
             System.err.println("Error reading users from file: " + e.getMessage());
         }
@@ -314,9 +322,7 @@ public class GUI extends Application {
 
     private void addUserToFile(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("resources/users.txt", true))) {
-            File file = new File("resources/users.txt");
-            if (file.length() != 0) {
-                // Если файл не пуст, добавьте символ перевода строки перед записью новой информации о пользователе
+            if (new File("resources/users.txt").length() != 0) {
                 writer.write("\n");
             }
             writer.write(user.getLogin() + ":" + user.getPassword() + ":" + (user instanceof Admin));
@@ -327,9 +333,13 @@ public class GUI extends Application {
 
     private void saveUsersToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("resources/users.txt", false))) {
-            for (User user : users.values()) {
-                writer.write(user.getLogin() + ":" + user.getPassword() + ":" + (user instanceof Admin) + "\n");
-            }
+            users.values().forEach(user -> {
+                try {
+                    writer.write(user.getLogin() + ":" + user.getPassword() + ":" + (user instanceof Admin) + "\n");
+                } catch (IOException e) {
+                    System.err.println("Error writing users to file: " + e.getMessage());
+                }
+            });
         } catch (IOException e) {
             System.err.println("Error writing users to file: " + e.getMessage());
         }
@@ -476,5 +486,55 @@ public class GUI extends Application {
         return output;
     }
 
+    private void showChangePasswordWindow(User user) {
+        Stage stage = new Stage();
+        VBox vbox = new VBox(10);
+        stage.setTitle("Change password");
+        stage.getIcons().add(new Image("/Images/logo.png")); // Установка логотипа метро
+
+        PasswordField currentPasswordField = new PasswordField();
+        currentPasswordField.setPromptText("Current Password");
+
+        PasswordField newPasswordField = new PasswordField();
+        newPasswordField.setPromptText("New Password");
+
+        Button changeBtn = new Button("Change Password");
+        changeBtn.setOnAction(e -> {
+            String currentPassword = currentPasswordField.getText();
+            String newPassword = newPasswordField.getText();
+
+            if (!user.getPassword().equals(currentPassword)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid Password");
+                alert.setContentText("Please enter your current password correctly.");
+                alert.showAndWait();
+            } else if (newPassword.length() < 4) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid Password");
+                alert.setContentText("Password must be at least 4 characters long.");
+                alert.showAndWait();
+            } else {
+                String temp = user.getLogin();
+                users.remove(temp);
+                users.put(temp, new User(temp, newPassword));
+                saveUsersToFile();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Password Changed");
+                alert.setHeaderText(null);
+                alert.setContentText("Your password has been changed successfully.");
+                alert.showAndWait();
+                stage.close();
+            }
+        });
+
+        vbox.getChildren().addAll(currentPasswordField, newPasswordField, changeBtn);
+        vbox.setPadding(new Insets(10));
+
+        Scene scene = new Scene(vbox, 300, 120);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

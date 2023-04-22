@@ -53,7 +53,7 @@ public class RouteCalculator {
             }
 
             // Если это переход между станциями, добавляем 3 минуты, иначе добавляем 2 минуты
-            travelTime += isConnection ? 3 : 2;
+            travelTime += isConnection ? 4 : 2;
         }
         return travelTime; // Возвращаем общее время путешествия
     }
