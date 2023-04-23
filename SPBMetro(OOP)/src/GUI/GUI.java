@@ -28,11 +28,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * This class is responsible for the graphical interface.
+ */
 public class GUI extends Application {
+    /**Route calculator.*/
     private final RouteCalculator calculator;
+    /**Output ListView.*/
     private final ListView outputList;
+    /**Map of users(login, User).*/
     private Map<String, User> users;
 
+    /**
+     * Constructor of GUI.
+     */
     public GUI() {
         JsonParser parser = new JsonParser();
         parser.parse();
@@ -44,10 +53,18 @@ public class GUI extends Application {
         loadUsersFromFile(); // при запуске удаляет пропуски
     }
 
+    /**
+     * Main method.
+     * @param args arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Start function for JavaFX application.
+     * @param primaryStage main stage
+     */
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Route Finder"); // Установка заголовка окна
@@ -57,6 +74,10 @@ public class GUI extends Application {
     }
 
     // Вход
+    /**
+     * Shows main menu with options to log in.
+     * @param primaryStage main stage
+     */
     private void showLoginMenu(Stage primaryStage) {
         VBox vbox = new VBox(10);
 
@@ -100,6 +121,11 @@ public class GUI extends Application {
         primaryStage.show();
     } // Меню выбора входа
 
+    /**
+     * Shows menu with login and password fields to log in.
+     * @param primaryStage main stage
+     * @param isAdmin shows if user is admin
+     */
     private void showLoginWindow(Stage primaryStage, boolean isAdmin) {
         VBox vbox = new VBox(10);
 
@@ -159,6 +185,10 @@ public class GUI extends Application {
         primaryStage.show();
     } // логгин
 
+    /**
+     * Shows sing in menu to create new user.
+     * @param primaryStage main stage
+     */
     private void showSignInWindow(Stage primaryStage) {
         VBox vbox = new VBox(10);
 
@@ -216,6 +246,11 @@ public class GUI extends Application {
     } // регистрация
 
     // Все остальные методы, когда уже зашел в акк
+    /**
+     * Shows main functionality depend on user status.
+     * @param primaryStage main stage
+     * @param user user class
+     */
     private void showMainScreen(Stage primaryStage, User user) {
         //очистить вывод
         outputList.getItems().clear();
@@ -298,6 +333,10 @@ public class GUI extends Application {
     }
 
     //Работа с юзерами и файлами
+
+    /**
+     * Loads users from file at start.
+     */
     private void loadUsersFromFile() {
         try {
             List<String> text = Files.lines(Paths.get("resources/users.txt"))
@@ -320,6 +359,10 @@ public class GUI extends Application {
         }
     }
 
+    /**
+     * Adds new users.
+     * @param user user class
+     */
     private void addUserToFile(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("resources/users.txt", true))) {
             if (new File("resources/users.txt").length() != 0) {
@@ -331,6 +374,9 @@ public class GUI extends Application {
         }
     }
 
+    /**
+     * Saves all users to file.
+     */
     private void saveUsersToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("resources/users.txt", false))) {
             users.values().forEach(user -> {
@@ -346,6 +392,10 @@ public class GUI extends Application {
     }
 
     //Методы
+
+    /**
+     * Shows admin menu(delete user's account, set admin/user).
+     */
     private void showAdminSettings() {
         // Создание нового окна
         Stage setNewAdminStage = new Stage();
@@ -418,16 +468,26 @@ public class GUI extends Application {
         setNewAdminStage.show(); // Отображение окна
     } // настройки админа
 
+    /**
+     * Help function to use FindRoute class.
+     * @param user user class
+     */
     private void showFindRouteWindow(User user) {
         FindRoute findRouteWindow = new FindRoute(calculator, outputList, user);
         findRouteWindow.show();
     } //поиск пути
 
+    /**
+     * Help function to use SetStatus class.
+     */
     private void showSetStatusWindow() {
         SetStatus setStatusWindow = new SetStatus(calculator);
         setStatusWindow.show();
     } // статус станции
 
+    /**
+     * Shows metro map of Saint-Petersburg.
+     */
     private void showImageWindow() {
         Stage imageStage = new Stage();
         imageStage.setTitle("Map of Saint-Petersburg");
@@ -459,6 +519,12 @@ public class GUI extends Application {
         imageStage.show();
     } // карта метро
 
+    /**
+     * Prints history of requested routes.
+     * @param calculator route calculator
+     * @param storedRoutes list of requested routes
+     * @return String of all stations on route.
+     */
     private String printHistoryOfRoutes(RouteCalculator calculator, List<List<Station>> storedRoutes) {
 
         if (storedRoutes.isEmpty()) {
@@ -486,6 +552,10 @@ public class GUI extends Application {
         return output;
     }
 
+    /**
+     * Shows menu to change current password.
+     * @param user user class
+     */
     private void showChangePasswordWindow(User user) {
         Stage stage = new Stage();
         VBox vbox = new VBox(10);

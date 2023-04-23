@@ -2,21 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69cf6df5-7236-4878-9e15-c3db5dc3f701" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/aspectjweaver_1_9_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP).iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP).iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/JsonParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/JsonParser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/RouteCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/RouteCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Users/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Users/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aspects/Calculations.aj" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Calculations/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/JsonParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/FindRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/FindRoute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/SetStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SetStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Structure/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Structure/Station.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/Guest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Guest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/User.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +30,9 @@
       <list>
         <option value="JavaFXApplication" />
         <option value="Class" />
+        <option value="@Aspect" />
         <option value="Aspect" />
+        <option value="package-info" />
       </list>
     </option>
   </component>
@@ -45,7 +47,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Java/javafx-sdk-20.0.1/lib" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -135,7 +137,8 @@
       <workItem from="1681925892265" duration="2030000" />
       <workItem from="1682025552771" duration="1993000" />
       <workItem from="1682172473044" duration="17039000" />
-      <workItem from="1682197603467" duration="762000" />
+      <workItem from="1682197603467" duration="1358000" />
+      <workItem from="1682275694086" duration="8154000" />
     </task>
     <servers />
   </component>

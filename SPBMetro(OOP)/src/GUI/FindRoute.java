@@ -17,14 +17,25 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ *  Help class to simplify code.
+ */
 public class FindRoute extends Stage {
     private RouteCalculator calculator;
     private TextField startStationField;
     private TextField endStationField;
     private Button findRouteBtn;
+    /**
+     * List of stations to use autofill feature.
+     */
     private String[] stationsAsString = {"Devyatkino", "Grazhdanskiy Prospekt", "Akademicheskaya", "Politekhnicheskaya", "Ploschad Muzhestva", "Lesnaya", "Vyborgskaya", "Ploshchad Lenina", "Chernyshevskaya", "Ploshchad Vosstaniya", "Vladimirskaya", "Pushkinskaya", "Tekhnologicheskiy Institut 1", "Baltiyskaya", "Narvskaya", "Kirovskiy Zavod", "Avtovo", "Leninskiy Prospekt", "Prospekt Veteranov", "Parnas", "Prospekt Prosvescheniya", "Ozerki", "Udelnaya", "Pionerskaya", "Chyornaya Rechka", "Petrogradskaya", "Gorkovskaya", "Nevskiy Prospekt", "Sennaya Ploshchad", "Tekhnologicheskiy Institut 2", "Frunzenskaya", "Moskovskiye Vorota", "Elektrosila", "Park Pobedy", "Moskovskaya", "Zvyozdnaya", "Kupchino", "Begovaya", "Zenit", "Primorskaya", "Vasileostrovskaya", "Gostiny Dvor", "Mayakovskaya", "Ploshchad Aleksandra Nevskogo 1", "Yelizarovskaya", "Lomonosovskaya", "Proletarskaya", "Obukhovo", "Rybatskoye", "Spasskaya", "Dostoyevskaya", "Ligovskiy Prospekt", "Ploshchad Aleksandra Nevskogo 2", "Novocherkasskaya", "Ladozhskaya", "Prospekt Bolshevikov", "Ulitsa Dybenko", "Komendantskiy Prospekt", "Staraya Derevnya", "Krestovskiy Ostrov", "Chkalovskaya", "Sportivnaya", "Admiralteyskaya", "Sadovaya", "Zvenigorodskaya", "Obvodny Kanal", "Volkovskaya", "Bukharestskaya", "Mezhdunarodnaya", "Prospekt Slavy", "Dunayskaya", "Shushary"};
 
+    /**
+     * Find route menu.
+     * @param calculator calculator
+     * @param resultTextArea output area
+     * @param user user
+     */
     public FindRoute(RouteCalculator calculator, ListView resultTextArea, User user) {
         this.calculator = calculator;
         setTitle("Find Route");
@@ -125,6 +136,11 @@ public class FindRoute extends Stage {
         setScene(scene);
     }
 
+    /**
+     * Print route method.
+     * @param route list of stations
+     * @return String of stations on this route
+     */
     private String printRoute(List<Station> route) {
         if (route.isEmpty()) {
             return "No route found. Maybe one of stations is closed or wrong input.";

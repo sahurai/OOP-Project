@@ -1,5 +1,8 @@
 package Users;
 
+/**
+ * Class of guest user.
+ */
 public class Guest extends User {
     public Guest() {
         super("guest", "guest");

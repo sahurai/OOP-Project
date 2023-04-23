@@ -5,9 +5,15 @@ import Structure.Station;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class of default user.
+ */
 public class User {
+    /** User's login.*/
     private String login;
+    /** User's password.*/
     private String password;
+    /** User's requested routes.*/
     private List<List<Station>> storedRoutes;
 
     public User(String login, String password) {
@@ -57,4 +63,3 @@ public class User {
         return login + (canSetNewAdmin() ? " Status: admin" : " Status: user");
     }
 }
-

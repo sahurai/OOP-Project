@@ -2,6 +2,9 @@ package Structure;
 
 import java.util.Objects;
 
+/**
+ * Class for storing information about the station.
+ */
 public class Station {
     private int line;
     private String nameOfStation;
