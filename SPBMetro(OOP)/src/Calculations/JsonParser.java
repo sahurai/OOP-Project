@@ -34,7 +34,16 @@ public class JsonParser {
                     List<Station> stationList = new ArrayList<>(); // Список станций для определенной линии
                     JSONArray stationsArray = (JSONArray) stationsObj.get(lineObj); // получаем список станций на линии
                     for (Object stationObj : stationsArray) {
-                        stationList.add(new Station(stationObj.toString(), line));
+                        String[] parts = stationObj.toString().split("\\|"); // разделяю строку по знаку "|"
+                        if(parts.length == 3){
+                            stationList.add(new Station(parts[0], line, Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
+                        }else{
+                            try {
+                                throw new ParseException("Wrong input in this station: " + stationObj.toString());
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                     stations.add(stationList); // Добавляем список станций линии в общий список линий
                 }
@@ -50,7 +59,8 @@ public class JsonParser {
                         JSONObject stationJson = (JSONObject) stationObj;
                         int line = Integer.parseInt(stationJson.get("line").toString());
                         String station = (String) stationJson.get("station");
-                        connectionList.add(new Station(station, line));
+                        String[] parts = station.split("\\|"); // разделяю строку по знаку "|"
+                        connectionList.add(new Station(parts[0], line, Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
                     }
                     connections.add(connectionList); // Добавляем в общий список пересадок
                 }

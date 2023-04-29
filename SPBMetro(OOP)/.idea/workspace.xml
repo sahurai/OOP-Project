@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69cf6df5-7236-4878-9e15-c3db5dc3f701" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/aspectjrt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/aspectjweaver.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/aspectjweaver_1_9_19.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP).iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP).iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/JsonParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/JsonParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Users/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Users/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/MetroMap.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/MetroMap.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Calculations/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/JsonParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Structure/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Structure/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Users/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Structure/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Structure/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Users/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Users/UserInterface.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,13 +22,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="package-info" />
         <option value="AnnotationType" />
         <option value="@Aspect" />
         <option value="Aspect" />
         <option value="Tag Library Descriptor" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -152,7 +149,7 @@
       <workItem from="1682275694086" duration="10362000" />
       <workItem from="1682447949354" duration="4420000" />
       <workItem from="1682452710905" duration="3442000" />
-      <workItem from="1682768944261" duration="2078000" />
+      <workItem from="1682768944261" duration="15827000" />
     </task>
     <servers />
   </component>

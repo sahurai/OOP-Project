@@ -46,6 +46,7 @@ public class GUI extends Application {
         JsonParser parser = new JsonParser();
         parser.parse();
         calculator = new RouteCalculator(parser.stations, parser.connections);
+        calculator.setPathFindingStrategy(new DijkstraRouteFindingStrategy()); // Выберите стратегию
         outputList = new ListView();
         outputList.setEditable(false);
         outputList.setPrefHeight(350);

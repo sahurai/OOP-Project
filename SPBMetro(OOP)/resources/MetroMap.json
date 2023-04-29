@@ -1,161 +1,161 @@
 {
     "stations" : {
         "1" : [
-            "Devyatkino",
-            "Grazhdanskiy Prospekt",
-            "Akademicheskaya",
-            "Politekhnicheskaya",
-            "Ploschad Muzhestva",
-            "Lesnaya",
-            "Vyborgskaya",
-            "Ploshchad Lenina",
-            "Chernyshevskaya",
-            "Ploshchad Vosstaniya",
-            "Vladimirskaya",
-            "Pushkinskaya",
-            "Tekhnologicheskiy Institut 1",
-            "Baltiyskaya",
-            "Narvskaya",
-            "Kirovskiy Zavod",
-            "Avtovo",
-            "Leninskiy Prospekt",
-            "Prospekt Veteranov"
+            "Devyatkino|0|3",
+            "Grazhdanskiy Prospekt|3|3",
+            "Akademicheskaya|3|3",
+            "Politekhnicheskaya|3|3",
+            "Ploschad Muzhestva|3|3",
+            "Lesnaya|3|3",
+            "Vyborgskaya|3|3",
+            "Ploshchad Lenina|3|3",
+            "Chernyshevskaya|3|3",
+            "Ploshchad Vosstaniya|3|3",
+            "Vladimirskaya|3|4",
+            "Pushkinskaya|4|4",
+            "Tekhnologicheskiy Institut 1|4|5",
+            "Baltiyskaya|5|3",
+            "Narvskaya|3|3",
+            "Kirovskiy Zavod|3|3",
+            "Avtovo|3|3",
+            "Leninskiy Prospekt|3|3",
+            "Prospekt Veteranov|3|0"
         ],
         "2" : [
-            "Parnas",
-            "Prospekt Prosvescheniya",
-            "Ozerki",
-            "Udelnaya",
-            "Pionerskaya",
-            "Chyornaya Rechka",
-            "Petrogradskaya",
-            "Gorkovskaya",
-            "Nevskiy Prospekt",
-            "Sennaya Ploshchad",
-            "Tekhnologicheskiy Institut 2",
-            "Frunzenskaya",
-            "Moskovskiye Vorota",
-            "Elektrosila",
-            "Park Pobedy",
-            "Moskovskaya",
-            "Zvyozdnaya",
-            "Kupchino"
+            "Parnas|0|3",
+            "Prospekt Prosvescheniya|3|3",
+            "Ozerki|3|3",
+            "Udelnaya|3|3",
+            "Pionerskaya|3|3",
+            "Chyornaya Rechka|3|4",
+            "Petrogradskaya|4|3",
+            "Gorkovskaya|3|4",
+            "Nevskiy Prospekt|4|3",
+            "Sennaya Ploshchad|3|4",
+            "Tekhnologicheskiy Institut 2|4|3",
+            "Frunzenskaya|3|3",
+            "Moskovskiye Vorota|3|3",
+            "Elektrosila|3|3",
+            "Park Pobedy|3|3",
+            "Moskovskaya|3|3",
+            "Zvyozdnaya|3|3",
+            "Kupchino|3|0"
         ],
         "3" : [
-            "Begovaya",
-            "Zenit",
-            "Primorskaya",
-            "Vasileostrovskaya",
-            "Gostiny Dvor",
-            "Mayakovskaya",
-            "Ploshchad Aleksandra Nevskogo 1",
-            "Yelizarovskaya",
-            "Lomonosovskaya",
-            "Proletarskaya",
-            "Obukhovo",
-            "Rybatskoye"
+            "Begovaya|0|3",
+            "Zenit|3|5",
+            "Primorskaya|5|4",
+            "Vasileostrovskaya|4|5",
+            "Gostiny Dvor|5|5",
+            "Mayakovskaya|5|5",
+            "Ploshchad Aleksandra Nevskogo 1|5|7",
+            "Yelizarovskaya|7|3",
+            "Lomonosovskaya|3|3",
+            "Proletarskaya|3|3",
+            "Obukhovo|3|3",
+            "Rybatskoye|3|0"
         ],
         "4" : [
-            "Spasskaya",
-            "Dostoyevskaya",
-            "Ligovskiy Prospekt",
-            "Ploshchad Aleksandra Nevskogo 2",
-            "Novocherkasskaya",
-            "Ladozhskaya",
-            "Prospekt Bolshevikov",
-            "Ulitsa Dybenko"
+            "Spasskaya|0|5",
+            "Dostoyevskaya|5|4",
+            "Ligovskiy Prospekt|4|3",
+            "Ploshchad Aleksandra Nevskogo 2|3|3",
+            "Novocherkasskaya|3|3",
+            "Ladozhskaya|3|3",
+            "Prospekt Bolshevikov|3|3",
+            "Ulitsa Dybenko|3|3"
         ],
         "5" : [
-            "Komendantskiy Prospekt",
-            "Staraya Derevnya",
-            "Krestovskiy Ostrov",
-            "Chkalovskaya",
-            "Sportivnaya",
-            "Admiralteyskaya",
-            "Sadovaya",
-            "Zvenigorodskaya",
-            "Obvodny Kanal",
-            "Volkovskaya",
-            "Bukharestskaya",
-            "Mezhdunarodnaya",
-            "Prospekt Slavy",
-            "Dunayskaya",
-            "Shushary"
+            "Komendantskiy Prospekt|3|3",
+            "Staraya Derevnya|3|4",
+            "Krestovskiy Ostrov|4|3",
+            "Chkalovskaya|3|3",
+            "Sportivnaya|3|5",
+            "Admiralteyskaya|5|4",
+            "Sadovaya|4|4",
+            "Zvenigorodskaya|4|4",
+            "Obvodny Kanal|4|3",
+            "Volkovskaya|3|3",
+            "Bukharestskaya|3|3",
+            "Mezhdunarodnaya|3|3",
+            "Prospekt Slavy|3|3",
+            "Dunayskaya|3|3",
+            "Shushary|3|0"
         ]
     },
     "connections": [
         [
             {
                 "line": 2,
-                "station": "Nevskiy Prospekt"
+                "station": "Nevskiy Prospekt|4|3"
             },
             {
                 "line": 3,
-                "station": "Gostiny Dvor"
+                "station": "Gostiny Dvor|5|5"
             }
         ],
         [
             {
                 "line": 1,
-                "station": "Ploshchad Vosstaniya"
+                "station": "Ploshchad Vosstaniya|3|3"
             },
             {
                 "line": 3,
-                "station": "Mayakovskaya"
+                "station": "Mayakovskaya|5|5"
             }
         ],
         [
             {
                 "line": 2,
-                "station": "Sennaya Ploshchad"
+                "station": "Sennaya Ploshchad|3|4"
             },
             {
                 "line": 4,
-                "station": "Spasskaya"
+                "station": "Spasskaya|0|5"
             },
             {
                 "line": 5,
-                "station": "Sadovaya"
+                "station": "Sadovaya|4|4"
             }
         ],
         [
             {
                 "line": 1,
-                "station": "Vladimirskaya"
+                "station": "Vladimirskaya|3|4"
             },
             {
                 "line": 4,
-                "station": "Dostoevskaya"
+                "station": "Dostoyevskaya|5|4"
             }
         ],
         [
             {
                 "line": 1,
-                "station": "Pushkinskaya"
+                "station": "Pushkinskaya|4|4"
             },
             {
                 "line": 5,
-                "station": "Zvenigorodskaya"
+                "station": "Zvenigorodskaya|4|4"
             }
         ],
         [
             {
                 "line": 3,
-                "station": "Ploshchad Aleksandra Nevskogo 1"
+                "station": "Ploshchad Aleksandra Nevskogo 1|5|7"
             },
             {
                 "line": 4,
-                "station": "Ploshchad Aleksandra Nevskogo 2"
+                "station": "Ploshchad Aleksandra Nevskogo 2|3|3"
             }
         ],
         [
             {
                 "line": 1,
-                "station": "Tekhnologicheskiy Institut 1"
+                "station": "Tekhnologicheskiy Institut 1|4|5"
             },
             {
                 "line": 2,
-                "station": "Tekhnologicheskiy Institut 2"
+                "station": "Tekhnologicheskiy Institut 2|4|3"
             }
         ]
     ]

@@ -6,9 +6,20 @@ import java.util.Objects;
  * Class for storing information about the station.
  */
 public class Station {
+
     private int line;
     private String nameOfStation;
     private boolean status;
+    private int travelTimeBack;
+    private int travelTimeForward;
+
+    public Station(String nameOfStation, int line, int travelTimeBack, int travelTimeForward) {
+        this.nameOfStation = nameOfStation;
+        this.line = line;
+        this.status = true;
+        this.travelTimeBack = travelTimeBack;
+        this.travelTimeForward = travelTimeForward;
+    }
 
     public Station(String nameOfStation, int line) {
         this.nameOfStation = nameOfStation;
@@ -32,6 +43,22 @@ public class Station {
         return nameOfStation;
     }
 
+    public int getTravelTimeBack() {
+        return travelTimeBack;
+    }
+
+    public void setTravelTimeBack(int travelTimeBack) {
+        this.travelTimeBack = travelTimeBack;
+    }
+
+    public int getTravelTimeForward() {
+        return travelTimeForward;
+    }
+
+    public void setTravelTimeForward(int travelTimeForward) {
+        this.travelTimeForward = travelTimeForward;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,6 +75,6 @@ public class Station {
 
     @Override
     public String toString() {
-        return nameOfStation + ": " + line;
+        return nameOfStation + " | Line: " + line;
     }
 }
