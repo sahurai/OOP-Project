@@ -1,5 +1,5 @@
 # OOP-Project
-## Project description:
+## Project description
 This project is a solution for finding the shortest path between metro stations in **Saint-Petersburg** with GUI. With few more intresting features like:
 1. Admin panel. 
 2. Set Status of station.
@@ -9,7 +9,7 @@ This project is a solution for finding the shortest path between metro stations 
 6. 3 types of users.
 7. History of previous requested routes.
 8. Change password option.
-## Project packages:
+## Project packages
 ### Calculations
   In this package I keep Json Parser and all methods to calculate the shortest route.
 ### GUI
