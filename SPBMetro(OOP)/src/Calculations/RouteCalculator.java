@@ -83,7 +83,7 @@ public class RouteCalculator{
         return travelTime; // Возвращаем общее время путешествия
     }
 
-    public void setPathFindingStrategy(RouteFindingStrategy pathFindingStrategy) {
+    public void setRouteFindingStrategy(RouteFindingStrategy pathFindingStrategy) {
         this.RouteFindingStrategy = pathFindingStrategy;
     }
 

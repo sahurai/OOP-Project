@@ -75,6 +75,6 @@ public class Station {
 
     @Override
     public String toString() {
-        return nameOfStation + " | Line: " + line;
+        return nameOfStation + "|Line: " + line;
     }
 }

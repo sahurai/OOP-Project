@@ -14,15 +14,33 @@ public class DijkstraRouteFindingStrategy implements RouteFindingStrategy{
     private List<List<Station>> connections; // переходы (двумерное поле)
 
     @Override
-    public List<Station> findShortestRoute(String start, String end) {
+    public List<Station> findShortestRoute(String startName, String endName) {
         // Инициализация
         Map<Station, Integer> distances = new HashMap<>();
         Map<Station, Station> previous = new HashMap<>();
         PriorityQueue<Station> queue = new PriorityQueue<>(Comparator.comparingInt(distances::get));
 
+        Station start = findStationByName(startName); // Находим станции по их названиям
+        Station end = findStationByName(endName); // Находим станции по их названиям
+
+        // Проверяем, что обе станции найдены
+        if (start == null || end == null) {
+            System.out.println("Start or end station not found.");
+            return new ArrayList<>();
+        }
+
+        // Проверяем открыта ли станция прибытия или отбытия
+        if (!end.isStatus()) {
+            System.out.println("This station: " + end.getNameOfStation() + " is closed! You can't get there.");
+            return new ArrayList<>();
+        }else if(!start.isStatus()){
+            System.out.println("This station: " + start.getNameOfStation() + " is closed! You can't start from here.");
+            return new ArrayList<>();
+        }
+
         for (List<Station> line : stations) {
             for (Station station : line) {
-                if (station.getNameOfStation().equals(start)) {
+                if (station.getNameOfStation().equals(startName)) {
                     distances.put(station, 0);
                 } else {
                     distances.put(station, Integer.MAX_VALUE);
@@ -37,7 +55,7 @@ public class DijkstraRouteFindingStrategy implements RouteFindingStrategy{
             Station currentStation = queue.poll();
 
             // Если мы нашли конечную станцию, выходим из цикла
-            if (currentStation.getNameOfStation().equals(end)) {
+            if (currentStation.getNameOfStation().equals(endName)) {
                 break;
             }
 
@@ -56,7 +74,7 @@ public class DijkstraRouteFindingStrategy implements RouteFindingStrategy{
 
         // Восстановление маршрута
         List<Station> shortestPath = new ArrayList<>();
-        Station current = findStationByName(end);
+        Station current = findStationByName(endName);
         while (current != null) {
             shortestPath.add(current);
             current = previous.get(current);

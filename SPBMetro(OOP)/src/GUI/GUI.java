@@ -3,16 +3,20 @@ package GUI;
 import Calculations.*;
 import Users.*;
 import Structure.*;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
@@ -38,6 +42,8 @@ public class GUI extends Application {
     private final ListView outputList;
     /**Map of users(login, User).*/
     private Map<String, User> users;
+    /**Current strategy in program.*/
+    private RouteFindingStrategy currentStrategy = new DijkstraRouteFindingStrategy();
 
     /**
      * Constructor of GUI.
@@ -46,10 +52,11 @@ public class GUI extends Application {
         JsonParser parser = new JsonParser();
         parser.parse();
         calculator = new RouteCalculator(parser.stations, parser.connections);
-        calculator.setPathFindingStrategy(new DijkstraRouteFindingStrategy()); // Выберите стратегию
+        calculator.setRouteFindingStrategy(currentStrategy); // Выберите стратегию
         outputList = new ListView();
         outputList.setEditable(false);
         outputList.setPrefHeight(350);
+        outputList.setCellFactory(cell -> new CustomListCell());
         users = new HashMap<>();
         loadUsersFromFile(); // при запуске удаляет пропуски
     }
@@ -108,12 +115,24 @@ public class GUI extends Application {
             User guest = new Guest();
             showMainScreen(primaryStage, guest);
         });
+
+        Button switchStrategyBtn = new Button("Switch algorithm");
+        switchStrategyBtn.setOnAction(e -> showChangeAlgorithmWindow());
+        HBox hBox = new HBox(switchStrategyBtn);
+        hBox.setAlignment(Pos.CENTER_RIGHT);
+        // Создаем VBox и размещаем HBox в нижней части
+        VBox switchAlgorithmBox = new VBox();
+        switchAlgorithmBox.setFillWidth(true);
+        switchAlgorithmBox.getChildren().add(hBox);
+        switchAlgorithmBox.setAlignment(Pos.BOTTOM_RIGHT);
+
+
         // одинаквый размер кнопок
         logInAsAdminBtn.setMinWidth(200);
         logInAsUserBtn.setMinWidth(200);
         logInAsGuestBtn.setMinWidth(200);
 
-        vbox.getChildren().addAll(logo,text, logInAsUserBtn, logInAsGuestBtn, logInAsAdminBtn);
+        vbox.getChildren().addAll(logo,text, logInAsUserBtn, logInAsGuestBtn, logInAsAdminBtn, switchAlgorithmBox);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(10));
 
@@ -246,7 +265,7 @@ public class GUI extends Application {
         primaryStage.show();
     } // регистрация
 
-    // Все остальные методы, когда уже зашел в акк
+
     /**
      * Shows main functionality depend on user status.
      * @param primaryStage main stage
@@ -331,7 +350,7 @@ public class GUI extends Application {
         // Создание сцены и установка ее для primaryStage
         primaryStage.setScene(scene);
         primaryStage.show(); // Отображение главного окна
-    }
+    } // Все остальные методы, когда уже зашел в акк
 
     //Работа с юзерами и файлами
 
@@ -521,6 +540,42 @@ public class GUI extends Application {
     } // карта метро
 
     /**
+     * Shows menu to change algorithm.
+     */
+    private void showChangeAlgorithmWindow(){
+        Stage newStage = new Stage();
+        String strategyName = (currentStrategy instanceof DijkstraRouteFindingStrategy) ? "Dijkstra's algorithm" : "BFS algorithm";
+        Label label = new Label("Current: " + strategyName);
+
+        // Создаем кнопку "Change"
+        Button changeButton = new Button("Change");
+        changeButton.setOnAction(e->{
+            if (currentStrategy instanceof DijkstraRouteFindingStrategy){
+                currentStrategy = new BFSRouteFindingStrategy();
+                calculator.setRouteFindingStrategy(currentStrategy);
+            }else{
+                currentStrategy = new DijkstraRouteFindingStrategy();
+                calculator.setRouteFindingStrategy(currentStrategy);
+            }
+            String newStrategyName = (currentStrategy instanceof DijkstraRouteFindingStrategy) ? "Dijkstra's algorithm" : "BFS algorithm";
+            label.setText("Current: " + newStrategyName);
+        });
+
+        // Создаем VBox для вертикального размещения элементов
+        VBox vbox = new VBox(10, label, changeButton);
+        vbox.setAlignment(Pos.CENTER_LEFT); // Выравнивание элементов справа
+        vbox.setPadding(new Insets(10, 20, 10, 10));
+        // Создаем сцену и добавляем компоновщик VBox
+        Scene newScene = new Scene(vbox, 260, 90);
+
+        // Настраиваем новое окно и отображаем его
+        newStage.setTitle("Switch algorithm");
+        newStage.getIcons().add(new Image("/Images/logo.png")); // Установка логотипа метро
+        newStage.setScene(newScene);
+        newStage.show();
+    } // смена стратегии
+
+    /**
      * Prints history of requested routes.
      * @param calculator route calculator
      * @param storedRoutes list of requested routes
@@ -608,4 +663,48 @@ public class GUI extends Application {
         stage.show();
     }
 
+    /**
+     * This class handles indents in output area.
+     */
+    private static class CustomListCell extends ListCell<String> {
+        private final GridPane gridPane = new GridPane();
+        private final Label firstLabel = new Label();
+        private final Label secondLabel = new Label();
+
+        public CustomListCell() {
+            super();
+            gridPane.add(firstLabel, 0, 0); // Добавляем первую метку в первый столбец
+            gridPane.add(secondLabel, 1, 0); // Добавляем вторую метку во второй столбец
+            GridPane.setHalignment(firstLabel, HPos.LEFT); // Выравниваем первую метку по левому краю
+            GridPane.setHalignment(secondLabel, HPos.LEFT); // Выравниваем вторую метку по левому краю
+            GridPane.setMargin(secondLabel, new Insets(0, 0, 0, 10)); // Добавляем отступ слева для второй метки
+            firstLabel.setPrefWidth(250); // Устанавливаем предпочтительную ширину для первой метки
+            firstLabel.setMaxWidth(Double.MAX_VALUE);
+        }
+
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (empty || item == null) {
+                setGraphic(null);
+            } else {
+                if (getIndex() == 0 || item.contains("Route")) { // Если индекс элемента равен 0 (первая строка)
+                    setText(item); // Устанавливаем текст без изменений
+                    setGraphic(null); // Очищаем графический контент
+                } else {
+                    if (item.contains("|")) {
+                        String[] data = item.split("\\|");
+                        firstLabel.setText(data[0]);
+                        secondLabel.setText(data[1]);
+                    } else {
+                        firstLabel.setText(item);
+                        secondLabel.setText("");
+                    }
+                    setText(null); // Очищаем текстовый контент
+                    setGraphic(gridPane); // Устанавливаем графический контент
+                }
+            }
+        }
+    }
 }
