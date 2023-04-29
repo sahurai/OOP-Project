@@ -11,7 +11,6 @@ import org.json.simple.parser.JSONParser;
 /**
  This class is responsible for parsing the stations and connections from a Json file and saving them in lists.
  */
-
 public class JsonParser {
     /**List of stations (two-dimensional array).*/
     public List<List<Station>> stations = new ArrayList<>(); // станции(двумерной поле)
@@ -65,7 +64,8 @@ public class JsonParser {
             parseStationsThread.join();
             parseConnectionsThread.join();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Parsing failed, try again.");
         }
     }
 }
+

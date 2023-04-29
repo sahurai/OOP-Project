@@ -3,7 +3,7 @@ package Users;
 /**
  * Class of admin user.
  */
-public class Admin extends User {
+public class Admin extends User{
     public Admin(String login, String password) {
         super(login, password);
     }
@@ -17,4 +17,5 @@ public class Admin extends User {
     public boolean canSetNewAdmin(){
         return true;
     }
+
 }

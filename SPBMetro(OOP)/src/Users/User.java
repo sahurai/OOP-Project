@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Class of default user.
  */
-public class User {
+public class User implements UserInterface{
     /** User's login.*/
     private String login;
     /** User's password.*/
