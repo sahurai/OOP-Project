@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69cf6df5-7236-4878-9e15-c3db5dc3f701" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/aspectjrt.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/aspectjweaver.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SPBMetro(OOP).iml" beforeDir="false" afterPath="$PROJECT_DIR$/SPBMetro(OOP).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/BFSRouteFindingStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/BFSRouteFindingStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/DijkstraRouteFindingStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/DijkstraRouteFindingStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/JsonParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/JsonParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/RouteCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/RouteCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/RouteFindingStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Calculations/RouteFindingStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/GUI/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/META-INF/SPBMetro(OOP).kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Structure/Station.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SPBMetro(OOP)/Structure/Station.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Calculations/DijkstraRouteFindingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/DijkstraRouteFindingStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/RouteCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Calculations/RouteFindingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Calculations/RouteFindingStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Structure/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Structure/Station.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +143,11 @@
       <workItem from="1682275694086" duration="10362000" />
       <workItem from="1682447949354" duration="4420000" />
       <workItem from="1682452710905" duration="3442000" />
-      <workItem from="1682768944261" duration="23900000" />
+      <workItem from="1682768944261" duration="24506000" />
+      <workItem from="1682806614488" duration="2094000" />
+      <workItem from="1682869137012" duration="703000" />
+      <workItem from="1683112012906" duration="996000" />
+      <workItem from="1683113115133" duration="193000" />
     </task>
     <servers />
   </component>

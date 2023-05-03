@@ -4,7 +4,7 @@ import Structure.*;
 import java.util.*;
 
 /**
- * This class represents a calculator for finding the shortest route between two metro stations.
+ * This class handles implementation of strategy pattern and used to find station by name and get travel time in another methods.
  */
 public class RouteCalculator{
     /**List of stations (two-dimensional array).*/
@@ -83,6 +83,10 @@ public class RouteCalculator{
         return travelTime; // Возвращаем общее время путешествия
     }
 
+    /**
+     * This method sets route finding strategy.
+     * @param pathFindingStrategy strategy.
+     */
     public void setRouteFindingStrategy(RouteFindingStrategy pathFindingStrategy) {
         this.RouteFindingStrategy = pathFindingStrategy;
     }
