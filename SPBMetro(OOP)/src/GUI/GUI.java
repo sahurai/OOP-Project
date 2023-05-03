@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -265,7 +266,6 @@ public class GUI extends Application {
         primaryStage.show();
     } // регистрация
 
-
     /**
      * Shows main functionality depend on user status.
      * @param primaryStage main stage
@@ -284,7 +284,8 @@ public class GUI extends Application {
         Button historyBtn = new Button("Get history of routes"); // кнопка History
         historyBtn.setOnAction(e -> {
             outputList.getItems().clear();
-            ObservableList<String> items = FXCollections.observableArrayList(printHistoryOfRoutes(calculator, user.getStoredRoutes()).split("\n"));
+            List<String> historyText = printHistoryOfRoutes(calculator, user.getStoredRoutes());
+            ObservableList<String> items = FXCollections.observableArrayList(historyText);
             outputList.setItems(items); // берем историю из класса User и калькулятор нужен для подсчета времени
         });
         historyBtn.setDisable(!user.canGetHistoryOfRoutes());
@@ -581,28 +582,31 @@ public class GUI extends Application {
      * @param storedRoutes list of requested routes
      * @return String of all stations on route.
      */
-    private String printHistoryOfRoutes(RouteCalculator calculator, List<List<Station>> storedRoutes) {
+    private List<String> printHistoryOfRoutes(RouteCalculator calculator, List<List<Station>> storedRoutes) {
+
+        List<String> output = new ArrayList<>();
 
         if (storedRoutes.isEmpty()) {
-            return "No routes have been requested.\n";
+            output.add("No routes have been requested.");
+            return output;
         }
 
         int costPerRoute = 70;
 
-        String output = "History of requested routes:\n";
+        output.add("History of requested routes:");
 
         for (int i = 0; i < storedRoutes.size(); i++) {
             List<Station> route = storedRoutes.get(i);
             int travelTime = calculator.getTravelTime(route);
 
-            output += "Route " + (i + 1) + ": " + route.get(0).getNameOfStation() + "-" + route.get(route.size() - 1).getNameOfStation() + " (Travel time: " + travelTime + " minutes, Cost: " + costPerRoute + " rubles):\n";
+            output.add("Route " + (i + 1) + ": " + route.get(0).getNameOfStation() + "-" + route.get(route.size() - 1).getNameOfStation() + " (Travel time: " + travelTime + " minutes, Cost: " + costPerRoute + " rubles):");
 
             int x = 0;
             for (Station station : route) {
-                output += "\t" + station + "\n";
+                output.add("\t" + station);
                 x++;
             }
-            output += "Total stations: " + x + "\n";
+            output.add("Total stations: " + x);
         }
 
         return output;
@@ -679,19 +683,19 @@ public class GUI extends Application {
             GridPane.setHalignment(secondLabel, HPos.LEFT); // Выравниваем вторую метку по левому краю
             GridPane.setMargin(secondLabel, new Insets(0, 0, 0, 10)); // Добавляем отступ слева для второй метки
             firstLabel.setPrefWidth(250); // Устанавливаем предпочтительную ширину для первой метки
-            firstLabel.setMaxWidth(Double.MAX_VALUE);
         }
 
         @Override
         protected void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
 
-            if (empty || item == null) {
+            if (empty || item == null || item.trim().isEmpty()) {
+                setText(null);
                 setGraphic(null);
             } else {
-                if (getIndex() == 0 || item.contains("Route")) { // Если индекс элемента равен 0 (первая строка)
-                    setText(item); // Устанавливаем текст без изменений
-                    setGraphic(null); // Очищаем графический контент
+                if (item.contains("Travel time:")) {
+                    setText(item);
+                    setGraphic(null);
                 } else {
                     if (item.contains("|")) {
                         String[] data = item.split("\\|");
@@ -701,8 +705,8 @@ public class GUI extends Application {
                         firstLabel.setText(item);
                         secondLabel.setText("");
                     }
-                    setText(null); // Очищаем текстовый контент
-                    setGraphic(gridPane); // Устанавливаем графический контент
+                    setText(null);
+                    setGraphic(gridPane);
                 }
             }
         }
