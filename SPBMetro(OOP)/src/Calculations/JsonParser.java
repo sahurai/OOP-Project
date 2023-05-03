@@ -13,9 +13,9 @@ import org.json.simple.parser.JSONParser;
  */
 public class JsonParser {
     /**List of stations (two-dimensional array).*/
-    public List<List<Station>> stations = new ArrayList<>(); // станции(двумерной поле)
+    private List<List<Station>> stations = new ArrayList<>(); // станции(двумерной поле)
     /**List of connections (two-dimensional array).*/
-    public List<List<Station>> connections = new ArrayList<>(); // переходы(двумерное поле)
+    private List<List<Station>> connections = new ArrayList<>(); // переходы(двумерное поле)
 
     /**
      * This method parse stations and connections from Json file and save them in lists.
@@ -76,6 +76,22 @@ public class JsonParser {
         } catch (Exception e) {
             System.out.println("Parsing failed, try again.");
         }
+    }
+
+    public List<List<Station>> getStations() {
+        return stations;
+    }
+
+    public void setStations(List<List<Station>> stations) {
+        this.stations = stations;
+    }
+
+    public List<List<Station>> getConnections() {
+        return connections;
+    }
+
+    public void setConnections(List<List<Station>> connections) {
+        this.connections = connections;
     }
 }
 

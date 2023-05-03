@@ -52,7 +52,7 @@ public class GUI extends Application {
     public GUI() {
         JsonParser parser = new JsonParser();
         parser.parse();
-        calculator = new RouteCalculator(parser.stations, parser.connections);
+        calculator = new RouteCalculator(parser.getStations(), parser.getConnections());
         calculator.setRouteFindingStrategy(currentStrategy); // Выберите стратегию
         outputList = new ListView();
         outputList.setEditable(false);
