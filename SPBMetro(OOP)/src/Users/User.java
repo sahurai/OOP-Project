@@ -60,6 +60,6 @@ public class User implements UserInterface{
 
     @Override
     public String toString() {
-        return login + (canSetNewAdmin() ? " Status: admin" : " Status: user");
+        return "Login: " + login + (canSetNewAdmin() ? " | Status: admin" : " | Status: user");
     }
 }
